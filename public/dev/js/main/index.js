@@ -1,4 +1,9 @@
+if (module.hot) {
+    module.hot.accept();
+}
+
 require('../../css/index.css');
-// import '../../css/index.css';
 require('vue');
-console.log('main/index.js, test 2');
+require('../mods/root.js');
+
+console.log('main/index.js, test 3');
