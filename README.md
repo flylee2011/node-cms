@@ -1,4 +1,4 @@
-# nodejs website
+# nodejs website
 
 A website powered by nodejs && expressjs && webpack && react(vue).
 
