@@ -11,7 +11,7 @@ var User = require('../../model/user');
 // 登录接口
 router.post('/admin/login', function(req, res) {
     var reqData = {
-        email: req.body.username + '@le.com',
+        email: req.body.username,
         password: md5(req.body.password)
     };
     User.getLoginUser(reqData, function(err, data) {

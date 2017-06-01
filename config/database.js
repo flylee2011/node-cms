@@ -6,10 +6,10 @@
 
 module.exports = {
     develop: {
-        host: '10.154.28.221',
+        host: '127.0.0.1',
         port: 3309,
-        database: 'discuz_bbs',
-        user: 'lemi_test',
-        password: 'A0R80rxiwQqFprG9uS8s'
+        database: 'test',
+        user: 'test',
+        password: 'test'
     }
 };
