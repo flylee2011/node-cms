@@ -55,7 +55,7 @@ app.listen(8001, function() {
     // var port = server.address().port;
     browserSync.init({
         open: false,
-        ui: false,
+        // ui: false,
         notify: false,
         proxy: 'localhost:8001',
         files: ['./public/dev/*.html'],

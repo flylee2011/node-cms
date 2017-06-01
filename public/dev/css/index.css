@@ -1,5 +1,8 @@
 body {
     background-color: #fff;
-    color: #f00;
+    color: #000;
     font-size: 20px;
+}
+p {
+    text-align: left;
 }

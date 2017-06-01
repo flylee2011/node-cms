@@ -10,6 +10,8 @@ if (module.hot) {
 
 require('../../css/index.css');
 require('vue');
-require('../mods/root.js');
+require('../mods/module1.js');
 
 console.log('main/index.js, test 1');
+
+document.getElementById('img').style.display = 'none';
