@@ -8,7 +8,7 @@ if (module.hot) {
     module.hot.accept();
 }
 
-require('../../css/index.css');
+require('../../css/page/index.css');
 require('vue');
 require('../mods/module1.js');
 

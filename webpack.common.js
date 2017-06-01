@@ -1,95 +1,90 @@
 /**
- * @fileoverview webpack 配置文件
+ * @fileoverview webpack 通用配置
  * @author liyifei<liyifei@le.com>
  * @date 2017/05
  */
-var webpack = require('webpack');
-var path = require('path');
-// plugins
-var extractTextPlugin = require('extract-text-webpack-plugin');
-var uglifyPlugin = require('uglifyjs-webpack-plugin');
-var htmlPlugin = require('html-webpack-plugin');
-var inlineManifestPlugin = require('inline-manifest-webpack-plugin');
+// var webpack = require('webpack');
+// var path = require('path');
 
-// 判断开发环境
-var env = process.env.NODE_ENV;
-var isDev = env !== 'production';
-var devPath = './public/dev/';
-var distPath = './public/dist/';
-var staticPath = isDev ? devPath : distPath;
-var publicPath = '/';
-
-var webpackConfig = {
-    // 入口
-    entry: {
-        // 公共类库
-        vendor: ['vue'],
-        // 业务
-        main: [devPath + 'js/main/index.js', 'webpack-hot-middleware/client']
-    },
-    // 输出
-    output: {
-        path: path.resolve(__dirname, staticPath),
-        publicPath: publicPath,
-        filename: isDev ? 'js/[name].js' : 'js/[name].[chunkhash:8].js'
-        // chunkFilename: '[name].[chunkhash:8].js'
-    },
-    // 模块，各种 loaders
-    module: {
-        rules: [
-            // css loader
-            // {
-            //     test: /\.css$/,
-            //     use: extractTextPlugin.extract({
-            //         use: {
-            //             loader: 'css-loader',
-            //             options: {
-            //                 minimize: true
-            //             }
-            //         }
-            //     })
-            // },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            },
-            // file loader
-            {
-                test: /\.(png|jpg|gif|svg)$/,
-                use: {
-                    loader: 'file-loader?name=[name].[ext]&publicPath=' + publicPath + '&outputPath=images/'
-                }
-            }
-        ]
-    },
-    // plugins
-    plugins: [
-        // // 分离 css 文件
-        // new extractTextPlugin({
-        //     filename: isDev ? 'css/[name].css' : 'css/[name].[contenthash:8].css',
-        //     allChunks: true
-        // }),
-
-        // 分离公共类库
-        new webpack.optimize.CommonsChunkPlugin({
-            name: ['vendor', 'manifest']
-        }),
-        // manifest 文件内容内联到 html 中
-        new inlineManifestPlugin({
-            name: 'webpackManifest'
-        }),
-        // uglifyjs
-        // new uglifyPlugin({}),
-
-        // 热替换
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
-
-        // html 生成
-        new htmlPlugin({
-            template: devPath + 'index.html'
-        })
-    ]
+var commonConfig = {
+    publicPath: '/',
+    // 开发目录
+    devPath: './public/dev/',
+    // 发布目录
+    distPath: './public/dist/',
+    // 图片相对路径
+    imgPath: 'images/'
 };
 
-module.exports = webpackConfig;
+// 入口
+commonConfig.entry = {
+    // 公共类库
+    vendor: ['vue'],
+    // 业务
+    page: commonConfig.devPath + 'js/page/index.js'
+};
+
+// // 开发环境
+// // 入口
+// commonConfig.devEntry = {
+//     // 公共类库
+//     vendor: ['vue'],
+//     // 业务
+//     page: [commonConfig.devPath + '/js/page/index.js', 'webpack-hot-middleware/client']
+// };
+// // 输出
+// commonConfig.devOutput = {
+//     path: path.resolve(__dirname, commonConfig.devPath),
+//     publicPath: commonConfig.publicPath,
+//     filename: 'js/[name].js'
+// };
+
+// // 发布环境
+// // 入口
+// commonConfig.distEntry = {
+//     // 公共类库
+//     vendor: ['vue'],
+//     // 业务
+//     page: commonConfig.devPath + '/js/page/index.js'
+// };
+
+// // loaders
+// commonConfig.loaders = {
+//     // file loader
+//     fileLoader: {
+//         test: /\.(png|jpg|gif|svg)$/,
+//         use: {
+//             loader: 'file-loader?name=[name].[ext]&publicPath=' + commonConfig.publicPath + '&outputPath=' + commonConfig.imgPath
+//         }
+//     },
+//     // css loader
+//     devCSSLoader: {
+//         test: /\.css$/,
+//         use: ['style-loader', 'css-loader']
+//     },
+//     distCSSLoader: {
+//         test: /\.css$/,
+//         use: extractTextPlugin.extract({
+//             use: {
+//                 loader: 'css-loader',
+//                 options: {
+//                     minimize: true
+//                 }
+//             }
+//         })
+//     }
+// };
+// // plugins
+// commonConfig.plugins = {
+//     // 分离公共类库
+//     commonChunk: new webpack.optimize.CommonsChunkPlugin({
+//         name: ['vendor', 'manifest']
+//     }),
+//     // manifest 文件内容内联到 html 中
+//     inlineManifest: new inlineManifestPlugin({
+//         name: 'webpackManifest'
+//     })
+// };
+
+console.log(commonConfig);
+module.exports = commonConfig;

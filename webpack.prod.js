@@ -5,6 +5,8 @@
  */
 var webpack = require('webpack');
 var path = require('path');
+// 通用配置
+var commonConfig = require('./webpack.common.js');
 // plugins
 var extractTextPlugin = require('extract-text-webpack-plugin');
 var uglifyPlugin = require('uglifyjs-webpack-plugin');
@@ -15,14 +17,14 @@ var productionConfig = {
     // 入口
     entry: {
         // 公共类库
-        vendor: ['vue'],
+        vendor: commonConfig.entry.vendor,
         // 业务
-        main: ['./public/dev/js/main/index.js']
+        page: commonConfig.entry.page
     },
     // 输出
     output: {
-        path: path.resolve(__dirname, './public/dist/'),
-        publicPath: '/',
+        path: path.resolve(__dirname, commonConfig.distPath),
+        publicPath: commonConfig.publicPath,
         filename: 'js/[name].[chunkhash:8].js'
     },
     // 模块，各种 loaders
@@ -44,7 +46,7 @@ var productionConfig = {
             {
                 test: /\.(png|jpg|gif|svg)$/,
                 use: {
-                    loader: 'file-loader?name=[name].[ext]&publicPath=/&outputPath=images/'
+                    loader: 'file-loader?name=[name].[ext]&publicPath=' + commonConfig.publicPath + '&outputPath=' + commonConfig.imgPath
                 }
             }
         ]
@@ -65,10 +67,10 @@ var productionConfig = {
             name: 'webpackManifest'
         }),
         // uglifyjs
-        new uglifyPlugin({}),
+        new uglifyPlugin(),
         // html 生成
         new htmlPlugin({
-            template: './public/dev/index.html'
+            template: commonConfig.devPath + 'index.html'
         })
     ]
 };

@@ -5,6 +5,8 @@
  */
 var webpack = require('webpack');
 var path = require('path');
+// 通用配置
+var commonConfig = require('./webpack.common.js');
 // plugins
 var htmlPlugin = require('html-webpack-plugin');
 var inlineManifestPlugin = require('inline-manifest-webpack-plugin');
@@ -13,14 +15,14 @@ var devConfig = {
     // 入口
     entry: {
         // 公共类库
-        vendor: ['vue'],
+        vendor: commonConfig.entry.vendor,
         // 业务
-        main: ['./public/dev/js/main/index.js', 'webpack-hot-middleware/client']
+        page: [commonConfig.entry.page, 'webpack-hot-middleware/client']
     },
     // 输出
     output: {
-        path: path.resolve(__dirname, './public/dev/'),
-        publicPath: '/',
+        path: path.resolve(__dirname, commonConfig.devPath),
+        publicPath: commonConfig.publicPath,
         filename: 'js/[name].js'
     },
     // 模块，各种 loaders
@@ -35,7 +37,7 @@ var devConfig = {
             {
                 test: /\.(png|jpg|gif|svg)$/,
                 use: {
-                    loader: 'file-loader?name=[name].[ext]&publicPath=/&outputPath=images/'
+                    loader: 'file-loader?name=[name].[ext]&publicPath=' + commonConfig.publicPath + '&outputPath=' + commonConfig.imgPath
                 }
             }
         ]
@@ -55,7 +57,7 @@ var devConfig = {
         new webpack.NoEmitOnErrorsPlugin(),
         // html 生成
         new htmlPlugin({
-            template: './public/dev/index.html'
+            template: commonConfig.devPath + 'index.html'
         })
     ]
 };

@@ -3,8 +3,8 @@
  * @author liyifei<yifei@zoocer.com>
  * @date 2017/05
  */
-var http = require('http');
-var reload = require('reload');
+// var http = require('http');
+// var reload = require('reload');
 var browserSync = require('browser-sync').create();
 // express
 var express = require('express');
@@ -22,7 +22,7 @@ var login = require('./routes/api/login');
 var env = process.argv[2] || process.env.NODE_ENV;
 var isDev = (env == 'develop') ? true : false;
 // 静态文件目录
-var staticDir = isDev ? 'public/dev' : 'public/dist';
+var staticDir = isDev ? './public/dev/' : './public/dist/';
 
 var app = express();
 
@@ -51,15 +51,20 @@ app.use('/api', login);
 // 启动
 // var server = http.createServer(app);
 // reload(server, app);
-app.listen(8001, function() {
-    // var port = server.address().port;
-    browserSync.init({
-        open: false,
-        // ui: false,
-        notify: false,
-        proxy: 'localhost:8001',
-        files: ['./public/dev/*.html'],
-        port: 8002
+if (isDev) {
+    app.listen(8001, function() {
+        browserSync.init({
+            open: false,
+            // ui: false,
+            notify: false,
+            proxy: 'localhost:8001',
+            files: [staticDir + '*.html'],
+            port: 8002
+        });
+        console.log('Web running on Development...');
     });
-    // console.log('Example app listening on port ', port);
-});
+} else {
+    app.listen(8001, function() {
+        console.log('Web running on Production...');
+    });
+}
