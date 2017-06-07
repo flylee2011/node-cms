@@ -6,3 +6,11 @@ body {
 p {
     text-align: left;
 }
+.icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-image: url('../../images/icon-look.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}

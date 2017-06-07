@@ -10,7 +10,9 @@ var commonConfig = {
     // 发布目录
     distPath: './public/dist/',
     // 图片相对路径
-    imgPath: 'images/'
+    imgPath: 'images/',
+    // 图片转 base64 最大文件大小，<10k 的图片转 base64
+    imgMaxSize: 10 * 1000
 };
 
 // 入口

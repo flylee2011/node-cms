@@ -4,6 +4,8 @@
 
 你可以只使用一种语言（Javascript）完成整个网站的搭建！
 
+[English Document](README.md)
+
 ---
 
 ## 安装说明
@@ -16,7 +18,6 @@ npm install -d
 
 ---
 
-## Features
 ## 特性
 
 * 基于 expressjs 4.x 框架，mysql 数据驱动
@@ -24,11 +25,17 @@ npm install -d
 * 开发环境，添加模块热替换（Hot Module Replace），自动刷新 html，方便开发过程
 
 TODO：
-* 添加打包目录清理插件
-* 添加 html loader
-* 处理图片压缩
+
+~~* 添加打包目录清理插件~~
+
+~~* 添加 html loader~~
+
+~~* 处理图片压缩~~
+
 * eslint 插件
+
 * 异步打包 && 懒加载
+
 * 支持 ES6
 
 ---

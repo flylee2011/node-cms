@@ -12,6 +12,7 @@ var extractTextPlugin = require('extract-text-webpack-plugin');
 var uglifyPlugin = require('uglifyjs-webpack-plugin');
 var htmlPlugin = require('html-webpack-plugin');
 var inlineManifestPlugin = require('inline-manifest-webpack-plugin');
+var cleanPlugin = require('clean-webpack-plugin');
 
 var productionConfig = {
     // 入口
@@ -34,20 +35,37 @@ var productionConfig = {
             {
                 test: /\.css$/,
                 use: extractTextPlugin.extract({
-                    use: {
+                    use: [{
                         loader: 'css-loader',
                         options: {
                             minimize: true
                         }
-                    }
+                    }]
                 })
             },
-            // file loader
+            // url loader
             {
                 test: /\.(png|jpg|gif|svg)$/,
-                use: {
-                    loader: 'file-loader?name=[name].[ext]&publicPath=' + commonConfig.publicPath + '&outputPath=' + commonConfig.imgPath
-                }
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        publicPath: commonConfig.publicPath,
+                        outputPath: commonConfig.imgPath,
+                        limit: commonConfig.imgMaxSize
+                    }
+                }]
+            },
+            // html loader
+            {
+                test: /\.html$/,
+                use: [{
+                    loader: 'html-loader',
+                    options: {
+                        minimize: true,
+                        attrs: ['img:src']
+                    }
+                }]
             }
         ]
     },
@@ -68,6 +86,8 @@ var productionConfig = {
         }),
         // uglifyjs
         new uglifyPlugin(),
+        // 清理发布目录
+        new cleanPlugin(commonConfig.distPath),
         // html 生成
         new htmlPlugin({
             template: commonConfig.devPath + 'index.html'

@@ -25,11 +25,17 @@ npm install -d
 * HMR and auto reload html for development
 
 TODO：
-* clean pack directory plugin
-* html loader
-* images compression
+
+~~* clean pack directory plugin~~
+
+~~* html loader~~
+
+~~* images compression~~
+
 * eslint plugins
+
 * pack && load async
+
 * support ES6
 
 ---
@@ -50,3 +56,5 @@ npm run server-dist
 ## License
 
 BSD license
+
+---

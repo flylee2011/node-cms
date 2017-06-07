@@ -36,9 +36,14 @@ var devConfig = {
             // file loader
             {
                 test: /\.(png|jpg|gif|svg)$/,
-                use: {
-                    loader: 'file-loader?name=[name].[ext]&publicPath=' + commonConfig.publicPath + '&outputPath=' + commonConfig.imgPath
-                }
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        publicPath: commonConfig.publicPath,
+                        outputPath: commonConfig.imgPath
+                    }
+                }]
             }
         ]
     },
