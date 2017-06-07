@@ -28,6 +28,7 @@ TODO：
 * clean pack directory plugin
 * html loader
 * images compression
+* eslint plugins
 * pack && load async
 * support ES6
 
