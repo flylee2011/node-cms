@@ -4,6 +4,8 @@ A website powered by nodejs && expressjs && webpack && react(vue).
 
 You can code a whole website only by one language-Javascript!
 
+[中文文档](README.zh.md)
+
 ---
 
 ## Installation
@@ -18,7 +20,7 @@ npm install -d
 
 ## Features
 
-* use express 4.x && mysql driver
+* use expressjs 4.x && mysql driver
 * use webpack for pack your front-end code
 * HMR and auto reload html for development
 
