@@ -32,7 +32,7 @@ TODO：
 
 ~~* images compression~~
 
-* eslint plugins
+~~* eslint plugins~~
 
 * pack && load async
 
