@@ -1,0 +1,138 @@
+/**
+ * @fileoverview eslint 配置文件
+ * @authors liyifei
+ * @date 2017/02
+ */
+{
+    // 运行环境
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "amd": true,
+        "node": true
+    },
+    // 解析器选项
+    "parserOptions": {
+        // ecma 版本
+        "ecmaVersion": 5,
+        // 代码类型
+        "sourceType": "module",
+        // 语言特性
+        "ecmaFeatures": {
+            // 全局使用return
+            "globalReturn": true,
+            // strict mode
+            "impliedStrict": true,
+            // jsx 语法
+            "jsx": true,
+            "experimentalObjectRestSpread": false
+        }
+    },
+    // 扩展
+    // 继承推荐的规则
+    "extends": "eslint:recommended",
+    // 全局变量
+    "globals": {
+        "$": true,
+        "ga": true,
+        "LEPass": true,
+        "LETV": true,
+        "LeMe": true,
+        "LetvJSBridge": true,
+        "LeMeJSBridge": true,
+        "Job": true
+    },
+    // 插件
+    "plugins": [
+        // "react"
+    ],
+    // 规则
+    "rules": {
+        /* 对 ESLint 默认推荐规则的修改 */
+        // 强制错误类，！！！重要规则！！！
+        // 禁止出现未使用过的变量（不检查参数）
+        "no-unused-vars": [2, {
+            "args": "none"
+        }],
+        // 禁止在嵌套的块中出现变量声明或 function 声明
+        "no-inner-declarations": [2, "both"],
+        // 警告类，！！！待加入！！！
+        // 禁用未声明的变量
+        "no-undef": 1,
+        // 禁止多次声明同一变量
+        "no-redeclare": 1,
+        // 禁止不必要的分号
+        "no-extra-semi": 1,
+        // 禁止出现空语句块
+        "no-empty": 1,
+        // 禁止使用 console
+        "no-console": 1,
+        // 禁止在字符串和注释之外不规则的空白
+        "no-irregular-whitespace": 1,
+        // 关闭
+        // 禁止在正则表达式中使用控制字符
+        "no-control-regex": 0,
+
+        /* 强制错误类，！！！重要规则！！！ */
+        // switch 语句中必须有 default
+        "default-case": 2,
+        // 禁止在 else 前有 return
+        "no-else-return": 2,
+        // 禁止使用前导和末尾小数点
+        "no-floating-decimal": 2,
+        // 禁止在返回语句中赋值
+        "no-return-assign": 2,
+        // 禁用 eval()
+        "no-eval": 2,
+        // 禁用隐式的eval()
+        "no-implied-eval": 2,
+        // 禁止自身比较
+        "no-self-compare": 2,
+        // 禁用 with 语句
+        "no-with": 2,
+        // 不允许初始化变量值为 undefined
+        "no-undef-init": 2,
+        // 不允许使用 undefined 变量
+        "no-undefined": 2,
+        // 禁止出现多个空格
+        "no-multi-spaces": 2,
+        // 语句大括号规则，所有语句不能省略大括号
+        "curly": [2, "all"],
+        // 判断语句复杂度，限制15圈
+        "complexity": [2, 15],
+        // 强制在语句末尾使用分号（主观）
+        "semi": [2, "always"],
+        // 禁止使用拖尾逗号（主观）
+        "comma-dangle": 2,
+        // 强制块语句的最大可嵌套深度（主观）
+        "max-depth": [2, {
+            "max": 6
+        }],
+        // 强制回调函数最大嵌套深度（主观）
+        "max-nested-callbacks": [2, {
+            "max": 4
+        }],
+        // 限制函数定义中最大参数个数，最多5个，超出要用 object 实现（主观）
+        "max-params": [2, {
+            "max": 5
+        }],
+
+        /* 警告类，！！！待加入！！！ */
+        // 强制使用一致的缩进，使用空格缩进，1个tab=4个空格（主观）
+        "indent": [1, 4],
+        // 驼峰命名变量（主观）
+        "camelcase": 1,
+        // 禁止 if 语句作为唯一语句出现在 else 语句块中（主观）
+        "no-lonely-if": 1,
+        // var 语句应该在块级作用域范围之内
+        "block-scoped-var": 1,
+        // 禁止变量定义前使用
+        "no-use-before-define": 1,
+        // 禁止出现空函数
+        "no-empty-function": 1,
+        // 禁用 alert
+        "no-alert": 1
+        // 禁止对函数参数再赋值（重要）
+        // "no-param-reassign": 1
+    }
+}

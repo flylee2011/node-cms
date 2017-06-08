@@ -1,0 +1,1 @@
+webpackJsonp([1],[,function(n,o){console.log("module1.js")},function(n,o){},function(n,o,e){e(2),e(0),e(1),console.log("main/index.js, test 1"),document.getElementById("img").style.display="none"}],[3]);

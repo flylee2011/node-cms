@@ -11,7 +11,7 @@ var commonConfig = require('./webpack.common.js');
 var extractTextPlugin = require('extract-text-webpack-plugin');
 var uglifyPlugin = require('uglifyjs-webpack-plugin');
 var htmlPlugin = require('html-webpack-plugin');
-var inlineManifestPlugin = require('inline-manifest-webpack-plugin');
+// var inlineManifestPlugin = require('inline-manifest-webpack-plugin');
 var cleanPlugin = require('clean-webpack-plugin');
 
 var productionConfig = {
@@ -31,6 +31,19 @@ var productionConfig = {
     // 模块，各种 loaders
     module: {
         rules: [
+            // eslint loader
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: [{
+                    loader: 'eslint-loader',
+                    options: {
+                        configFile: '.eslintrc.json',
+                        failOnError: true,
+                        quiet: true
+                    }
+                }]
+            },
             // css loader
             {
                 test: /\.css$/,
@@ -67,16 +80,6 @@ var productionConfig = {
                     }
                 }]
             }
-            // // html-withimg-loader
-            // {
-            //     test: /\.html$/,
-            //     use: [{
-            //         loader: 'html-withimg-loader',
-            //         options: {
-            //             min: false
-            //         }
-            //     }]
-            // }
         ]
     },
     // plugins
