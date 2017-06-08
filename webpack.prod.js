@@ -67,6 +67,16 @@ var productionConfig = {
                     }
                 }]
             }
+            // // html-withimg-loader
+            // {
+            //     test: /\.html$/,
+            //     use: [{
+            //         loader: 'html-withimg-loader',
+            //         options: {
+            //             min: false
+            //         }
+            //     }]
+            // }
         ]
     },
     // plugins
@@ -80,10 +90,10 @@ var productionConfig = {
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor', 'manifest']
         }),
-        // manifest 文件内容内联到 html 中
-        new inlineManifestPlugin({
-            name: 'webpackManifest'
-        }),
+        // // manifest 文件内容内联到 html 中
+        // new inlineManifestPlugin({
+        //     name: 'webpackManifest'
+        // }),
         // uglifyjs
         new uglifyPlugin(),
         // 清理发布目录
