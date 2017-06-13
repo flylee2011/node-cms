@@ -1,0 +1,1 @@
+webpackJsonp([2],{4:function(n,o){console.log("mods/module1.js")},6:function(n,o){},9:function(n,o,e){console.log("page/index.js, test 1"),e(6),e(4);var s=document.getElementById("img");s&&(s.style.display="none")}},[9]);
