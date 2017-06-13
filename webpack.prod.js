@@ -20,7 +20,8 @@ var productionConfig = {
         // 公共类库
         vendor: commonConfig.entry.vendor,
         // 业务
-        page: commonConfig.entry.page
+        page1: commonConfig.entry.page1,
+        page2: commonConfig.entry.page2
     },
     // 输出
     output: {
@@ -93,6 +94,11 @@ var productionConfig = {
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor', 'manifest']
         }),
+        // 自动加载模块，都被独立打包到 vendor
+        new webpack.ProvidePlugin({
+            $: 'n-zepto',
+            Vue: ['vue/dist/vue.esm.js', 'default']
+        }),
         // // manifest 文件内容内联到 html 中
         // new inlineManifestPlugin({
         //     name: 'webpackManifest'
@@ -103,7 +109,14 @@ var productionConfig = {
         new cleanPlugin(commonConfig.distPath),
         // html 生成
         new htmlPlugin({
-            template: commonConfig.devPath + 'index.html'
+            filename: 'index.html',
+            template: commonConfig.devPath + 'index.html',
+            excludeChunks: ['page2']
+        }),
+        new htmlPlugin({
+            filename: 'admin.html',
+            template: commonConfig.devPath + 'admin.html',
+            excludeChunks: ['page1']
         })
     ]
 };

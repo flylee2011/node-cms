@@ -4,7 +4,7 @@
  * @date 2017/05
  */
 var mysql = require('mysql');
-var dbConfig = require('./config/database');
+var dbConfig = require('../config/database');
 var pool = mysql.createPool(dbConfig.develop);
 
 module.exports = pool;

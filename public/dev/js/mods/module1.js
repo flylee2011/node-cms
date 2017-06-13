@@ -1,1 +1,1 @@
-console.log('module1.js');
+console.log('mods/module1.js');

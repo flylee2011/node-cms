@@ -5,17 +5,19 @@
   "main": "app.js",
   "scripts": {
     "server-dev": "cross-env NODE_ENV=develop supervisor -i public app.js",
-    "server-prod": "cross-env NODE_ENV=production forever app.js",
+    "server-prod": "cross-env NODE_ENV=production forever start app.js",
+    "server-stop": "forever stop app.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js"
   },
   "author": "liyifei",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.2",
     "body-parser": "^1.17.1",
+    "express": "^4.15.2",
     "md5": "^2.2.1",
     "multer": "^1.3.0",
     "mysql": "^2.13.0",
+    "n-zepto": "^1.2.0",
     "vue": "^2.3.3"
   },
   "devDependencies": {

@@ -18,9 +18,10 @@ var commonConfig = {
 // 入口
 commonConfig.entry = {
     // 公共类库
-    vendor: ['vue'],
+    vendor: ['vue', 'n-zepto'],
     // 业务
-    page: commonConfig.devPath + 'js/page/index.js'
+    page1: commonConfig.devPath + 'js/page/index.js',
+    page2: commonConfig.devPath + 'js/page/admin.js'
 };
 
 module.exports = commonConfig;

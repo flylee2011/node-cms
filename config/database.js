@@ -6,10 +6,10 @@
 
 module.exports = {
     develop: {
-        host: '127.0.0.1',
-        port: 3309,
-        database: 'test',
-        user: 'test',
-        password: 'test'
+        host: 'zoocerdb.mysql.rds.aliyuncs.com',
+        port: 3306,
+        database: 'zdemo',
+        user: 'zdemo',
+        password: 'zdemo@2017'
     }
 };

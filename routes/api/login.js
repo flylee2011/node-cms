@@ -8,18 +8,29 @@ var router = express.Router();
 var md5 = require('md5');
 var User = require('../../model/user');
 
+// 返回 json
+var resJson = {
+    code: 500,
+    data: null,
+    message: 'system error'
+};
+
 // 登录接口
 router.post('/admin/login', function(req, res) {
     var reqData = {
-        email: req.body.username,
+        username: req.body.username,
         password: md5(req.body.password)
     };
     User.getLoginUser(reqData, function(err, data) {
-        console.log('login user', data);
+        resJson.data = data;
         if (data && data.length) {
-            console.log('has user');
+            resJson.code = 200;
+            resJson.message = 'success';
+        } else {
+            resJson.code = 404;
+            resJson.message = 'no user';
         }
-        res.send(data);
+        res.send(resJson);
     });
 });
 

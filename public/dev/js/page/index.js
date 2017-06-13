@@ -1,5 +1,5 @@
 /**
- * @fileoverview js入口
+ * @fileoverview 首页，入口
  * @author liyifei<yifei@zoocer.com>
  * @date 2017/05
  */
@@ -7,11 +7,12 @@
 if (module.hot) {
     module.hot.accept();
 }
+console.log('page/index.js, test 1');
 
 require('../../css/page/index.css');
-require('vue');
 require('../mods/module1.js');
 
-console.log('main/index.js, test 1');
-
-document.getElementById('img').style.display = 'none';
+var imgNode = document.getElementById('img');
+if (imgNode) {
+    imgNode.style.display = 'none';
+}
