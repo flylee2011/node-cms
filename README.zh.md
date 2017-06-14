@@ -16,6 +16,27 @@ cd node-cms
 npm install -d
 ```
 
+## 目录结构
+```
+├─config # 服务端配置文件，比如数据库配置
+├─database # 数据库驱动
+│   ├─mysql.js # mysql 驱动
+├─model # 数据模型
+├─routes # 路由控制器
+├─app.js # server 入口
+├─public # 前端静态文件
+│   ├─dev # 开发环境
+│       ├─css
+│       ├─js
+│       ├─images
+│   ├─dist # 生产环境，由 webpack 构建生成，目录结构与 dev 相似
+├─webpack.common.js # webpack 配置，通用设置
+├─webpack.dev.js # webpack 配置，开发环境
+├─webpack.prod.js # webpack 配置，生产环境
+├─package.json # npm 依赖，脚本 cli 命令配置
+├─.eslintrc.json # eslint 脚本校验配置
+```
+
 ---
 
 ## 特性
