@@ -1,0 +1,1 @@
+webpackJsonp([1],[,,,function(n,o,e){(function(n){console.log("mods/module1.js");var o=document.getElementById("img");o&&(o.style.display="none");var s=n("#render-box"),t=e(9);s.html(n('<img src="'+t+'">'))}).call(o,e(0))},,function(n,o){},,function(n,o,e){console.log("page/index.js, test 1"),e(5),e(3)},,function(n,o){n.exports="/images/kiss.gif"}],[7]);
