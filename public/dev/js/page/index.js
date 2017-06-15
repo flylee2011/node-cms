@@ -11,8 +11,3 @@ console.log('page/index.js, test 1');
 
 require('../../css/page/index.css');
 require('../mods/module1.js');
-
-var imgNode = document.getElementById('img');
-if (imgNode) {
-    imgNode.style.display = 'none';
-}

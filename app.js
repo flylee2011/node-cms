@@ -4,19 +4,23 @@
  * @date 2017/05
  */
 // var http = require('http');
-// var reload = require('reload');
-var browserSync = require('browser-sync').create();
+
 // express
 var express = require('express');
 var bodyParser = require('body-parser');
+// 接口
+var login = require('./routes/api/login');
+
+// 开发环境需要的工具
 // webpack
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.dev.js');
 var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
 var webpackCompiler = webpack(webpackConfig);
-// 接口
-var login = require('./routes/api/login');
+// browser 自动刷新
+var browserSync = require('browser-sync').create();
+// var reload = require('reload');
 
 // 判断开发环境
 var env = process.argv[2] || process.env.NODE_ENV;
@@ -55,7 +59,6 @@ if (isDev) {
     app.listen(8001, function() {
         browserSync.init({
             open: false,
-            // ui: false,
             notify: false,
             proxy: 'localhost:8001',
             files: [staticDir + '*.html'],
