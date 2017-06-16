@@ -10,7 +10,7 @@
 
 ## 安装说明
 ```
-sudo npm install -g supervisor
+sudo npm install -g supervisor forever
 git clone https://github.com/flylee2011/node-cms.git
 cd node-cms
 npm install -d
